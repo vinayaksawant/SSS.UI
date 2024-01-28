@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './Shared/shared.module';
 import { CareerModule } from './Career/career.module';
 import { AdminModule } from './Admin/admin.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AdminModule } from './Admin/admin.module';
     AppRoutingModule,
     SharedModule,
     CareerModule,
-    AdminModule
+    AdminModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,3 +2,35 @@
 
 <br>
 <a [routerLink]="['.',1]">JobPostings</a>
+
+
+<ng-container *ngIf="jobPostings$ | async as jobPosts">
+    <table class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Short Description</th>
+          <th>Is Visible?</th>
+          <th>Categories</th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let jobPost of jobPosts">
+          <td>{{jobPost.title}}</td>
+          <td>{{jobPost.shortDescription}}</td>
+          <td>{{jobPost.isVisible}}</td>
+          <td>
+            <!-- <span *ngFor="let category of blogPost.categories">
+              <span class="badge bg-secondary me-2">{{category.name}}</span>
+            </span> -->
+          </td>
+          <td>
+            <a class="btn btn-light" [routerLink]="['/admin/blogposts', jobPost.id]">Edit</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </ng-container>
