@@ -7,17 +7,19 @@ import { UserComponent } from './user/user.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     UserListComponent,
     UserComponent,
     RegisterUserComponent,
-    UserLoginComponent
+    UserLoginComponent,
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule,
   ]
 })
 export class AdminModule { }

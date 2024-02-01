@@ -9,6 +9,8 @@ import { CareerModule } from './Career/career.module';
 import { AdminModule } from './Admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
 
+
+
 @NgModule({
   declarations: [
     AppComponent
