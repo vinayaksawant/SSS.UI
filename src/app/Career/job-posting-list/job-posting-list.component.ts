@@ -18,7 +18,7 @@ export class JobPostingListComponent implements OnInit{
 
   ngOnInit(): void {
         // get all blog posts from API
-    this.jobPostings$ = this.jobPostService.getAllJobPosts();
+    this.jobPostings$ = this.jobPostService.getAllJobPosting();
   }
 
 }

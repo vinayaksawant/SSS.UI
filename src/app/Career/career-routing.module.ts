@@ -6,8 +6,10 @@ import { EmployerListComponent } from './employer-list/employer-list.component';
 import { CandidateListComponent } from './candidate-list/candidate-list.component';
 import { JobPostingListComponent } from './job-posting-list/job-posting-list.component';
 import { EmployerComponent } from './employer/employer.component';
-import { JobPostingComponent } from './job-posting/job-posting.component';
 import { CandidateComponent } from './candidate/candidate.component';
+import { JobPostingAddComponent } from './job-posting-add/job-posting-add.component';
+import { JobPostingEditComponent } from './job-posting-edit/job-posting-edit.component';
+import { JobPostingViewComponent } from './job-posting-view/job-posting-view.component';
 
 const routes: Routes = [
   {path: 'career/careerhome', component:CareerHomeComponent},
@@ -16,7 +18,9 @@ const routes: Routes = [
   {path: 'career/Candidates', component:CandidateListComponent},
   {path: 'career/Candidates/:id', component:CandidateComponent},
   {path: 'career/JobPostings', component:JobPostingListComponent},
-  {path: 'career/JobPostings/:id', component:JobPostingComponent}
+  {path: 'career/JobPostings/view/:id', component:JobPostingViewComponent},
+  {path: 'career/JobPostings/edit/:id', component:JobPostingEditComponent},
+  {path: 'career/JobPostings/add/1', component:JobPostingAddComponent}
 ];
 
 @NgModule({

@@ -1,8 +1,8 @@
 <p>job-posting-list works!</p>
 
 <br>
-<a [routerLink]="['.',1]">JobPostings</a>
-
+  <!-- [routerLink]="['.',1]" -->
+  <a class="btn btn-primary" [routerLink]= "['./add', 1]">Add new </a>
 
 <ng-container *ngIf="jobPostings$ | async as jobPosts">
     <table class="table table-bordered mt-3">
@@ -26,7 +26,8 @@
             </span> -->
           </td>
           <td>
-            <a class="btn btn-light" [routerLink]="['/admin/blogposts', jobPost.id]">Edit</a>
+            <a class="btn btn-primary" [routerLink]= "['./edit',jobPost.id]">Edit</a>/
+            <a class="btn btn-primary" [routerLink]= "['./view',jobPost.id]">view</a>            
           </td>
         </tr>
       </tbody>

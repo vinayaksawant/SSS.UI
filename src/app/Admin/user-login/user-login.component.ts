@@ -41,7 +41,7 @@ export class UserLoginComponent {
         });
 
         // Redirect back to Home
-        this.router.navigateByUrl('/MainHome');
+        this.router.navigateByUrl('/mainhome');
 
        }
      });
