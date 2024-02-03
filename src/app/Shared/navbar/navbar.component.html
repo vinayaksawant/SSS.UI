@@ -79,7 +79,7 @@
 <div class="row"> <!--Navigation Bar -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img [src]="">Rameshwar<img></a>
+      <span class="navbar-brand" href="#"><img [src]="">Rameshwar<img></span>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -87,37 +87,37 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" routerLink="/MainHome" role="button" data-bs-toggle="dropdown"
+            <a class="nav-link dropdown-toggle" routerLink="/mainhome" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
               Home
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item">Upcomming Events</a></li>
+              <li><a class="dropdown-item" routerLink="/upcommingevents" >Upcomming Events</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" routerLink="/About">About Us</a></li>
+              <li><a class="dropdown-item" routerLink="/about">About Us</a></li>
             </ul>
           </li>
 
           <li class="nav-item dropdown"> <!--Business-->
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" routerLink="business/businesshome"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Business
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Enterprises</a></li>
+              <li><a class="dropdown-item" href="#"  routerLink="business/enterpriseslist"  >Enterprises</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Services</a></li>
+              <li><a class="dropdown-item" href="#"  routerLink="business/serviceofferedlist"  >Services</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Services Seekers</a></li>
+              <li><a class="dropdown-item" href="#"  routerLink="business/serviceseekerlist"  >Services Seekers</a></li>
             </ul>
           </li>
           <li class="nav-item"> <!-- SocialServices -->
-            <a class="nav-link" href="#">SocialServices</a>
+            <a class="nav-link" href="#" routerLink="socialservice/socialserviceshome" >SocialServices</a>
           </li>
           <li class="nav-item dropdown"> <!--Career-->
             <a class="nav-link dropdown-toggle" href="#" routerLink="/career/careerhome" role="button"
@@ -137,47 +137,39 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" routerLink="marketplace/marketplacehome"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
               MarketPlace
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Items Sell/Lease</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="marketplace/itembuyinglist">Items Buy/Rent</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Items Buy/Rent</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Services</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Services Seekers</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="marketplace/itemsellinglist">Items Sell/Lease</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" routerLink="realestate/realestatehome" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               RealEstate
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Property Sell/Lease</a></li>
+              <li><a class="dropdown-item" routerLink="realestate/Propertyforselllease" href="#">Property Sell/Lease</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Property Buy/Rent</a></li>
+              <li><a class="dropdown-item" routerLink="realestate/Propertyforbuyrent" href="#">Property Buy/Rent</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" routerLink="matrimony/matrimonyhome" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Matrimony
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Groom</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="matrimony/GroomList">Groom</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Bride</a></li>
+              <li><a class="dropdown-item" href="#" routerLink="matrimony/BrideList" >Bride</a></li>
             </ul>
           </li>
           <ng-container *ngIf="user !== undefined && user?.roles?.includes('Writer')">

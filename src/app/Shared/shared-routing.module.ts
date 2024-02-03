@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MainHomeComponent } from './main-home/main-home.component';
 import { AboutComponent } from './about/about.component';
+import { UpcommingeventComponent } from './upcommingevent/upcommingevent.component';
 
 const routes: Routes = [
-  {path: 'MainHome',component:MainHomeComponent},
-  {path: 'About',component:AboutComponent}
+  {path: 'mainhome',component:MainHomeComponent},
+  {path: 'upcommingevents',component:UpcommingeventComponent},  
+  {path: 'about',component:AboutComponent}
 ];
 
 @NgModule({
