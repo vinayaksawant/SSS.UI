@@ -43,7 +43,7 @@ export class JobPostingAddComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-     //this.categories$ = this.categoryService.getAllCategories();
+     this.categories$ = this.categoryService.getAllJobCategories();
 
     //  this.imageSelectorSubscription = this.imageService.onSelectImage()
     //  .subscribe({

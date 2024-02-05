@@ -1,5 +1,7 @@
 //import { Category } from "../../category/models/category.model";
 
+import { JobPostingCategory } from "./job-posting-Category.models";
+
 export interface JobPosting {
   id: string;
   title: string;
@@ -10,5 +12,5 @@ export interface JobPosting {
   author: string;
   publishedDate: Date;
   isVisible: boolean;
-  //categories: Category[];
+  jobCategories: JobPostingCategory[];
 }

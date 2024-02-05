@@ -18,8 +18,9 @@ const routes: Routes = [
   {path: 'career/Candidates', component:CandidateListComponent},
   {path: 'career/Candidates/:id', component:CandidateComponent},
   {path: 'career/JobPostings', component:JobPostingListComponent},
+
+  {path: 'career/JobPostings/:id', component:JobPostingEditComponent},
   {path: 'career/JobPostings/view/:id', component:JobPostingViewComponent},
-  {path: 'career/JobPostings/edit/:id', component:JobPostingEditComponent},
   {path: 'career/JobPostings/add/1', component:JobPostingAddComponent}
 ];
 

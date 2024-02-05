@@ -37,7 +37,7 @@
           <label for="content" class="form-label">Content</label>
   
           <div class="d-flex flex-row">
-            <div class="col-6 p-2">
+            <div class="col-6 p-2"> <!--left area where admin will enter posting-->>
               <textarea
               id="content"
               name="content"
@@ -47,10 +47,16 @@
               </textarea>
             </div>
   
-            <div class="col-6 p-2" style="max-height: 350px; overflow-y: scroll;">
-              <!-- <markdown [data]="model.content">
-             </markdown> -->
-            </div>
+                <!-- <markdown [data]="model.content"></markdown> -->
+            <!-- <div class="col-6 p-2" style="max-height: 350px; overflow-y: scroll;">
+                <textarea
+                id="contentrich"
+                name="contentrich"
+                class="form-control"
+                style="height: 350px;max-height: 350px;"
+                [(ngModel)]="model.content">              
+                </textarea>                
+            </div> -->
           </div>
   
         </div>

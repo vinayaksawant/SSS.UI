@@ -21,12 +21,12 @@
           <td>{{jobPost.shortDescription}}</td>
           <td>{{jobPost.isVisible}}</td>
           <td>
-            <!-- <span *ngFor="let category of blogPost.categories">
+              <span *ngFor="let category of jobPost.jobCategories">
               <span class="badge bg-secondary me-2">{{category.name}}</span>
-            </span> -->
+              </span> 
           </td>
           <td>
-            <a class="btn btn-primary" [routerLink]= "['./edit',jobPost.id]">Edit</a>/
+            <a class="btn btn-primary" [routerLink]= "['./',jobPost.id]">Edit</a>/
             <a class="btn btn-primary" [routerLink]= "['./view',jobPost.id]">view</a>            
           </td>
         </tr>

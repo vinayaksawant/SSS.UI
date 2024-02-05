@@ -9,5 +9,5 @@ export interface JobPostingUpdate {
     author: string;
     publishedDate: Date;
     isVisible: boolean;
-    jobcategories: JobPostingCategory[];
+    jobcategories: string[];
   }

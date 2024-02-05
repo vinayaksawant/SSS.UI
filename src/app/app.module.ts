@@ -16,7 +16,6 @@ import { RealestateModule } from './RealEstate/realestate.module';
 import { MatrimonyModule } from './Matrimony/matrimony.module';
 
 
-
 @NgModule({
   declarations: [
     AppComponent
@@ -33,6 +32,8 @@ import { MatrimonyModule } from './Matrimony/matrimony.module';
     RealestateModule,
     MatrimonyModule,
     HttpClientModule
+  ],
+  exports:[
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, 
