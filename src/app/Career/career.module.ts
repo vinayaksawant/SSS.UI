@@ -13,6 +13,8 @@ import { EmployerComponent } from './employer/employer.component';
 import { JobPostingAddComponent } from './job-posting-add/job-posting-add.component';
 import { JobPostingEditComponent } from './job-posting-edit/job-posting-edit.component';
 import { JobPostingViewComponent } from './job-posting-view/job-posting-view.component';
+import { SharedModule } from '../Shared/shared.module';
+
 
 
 @NgModule({
@@ -25,13 +27,14 @@ import { JobPostingViewComponent } from './job-posting-view/job-posting-view.com
     EmployerComponent,
     JobPostingAddComponent,
     JobPostingEditComponent,
-    JobPostingViewComponent
+    JobPostingViewComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
-    CareerRoutingModule
-  ],
+    CareerRoutingModule,
+    SharedModule,
+     ],
   exports: [
 
 
