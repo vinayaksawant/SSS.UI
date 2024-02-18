@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { FileUpload } from '../models/fiile-upload.model';
+import { FileUpload } from '../models/file-upload.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 

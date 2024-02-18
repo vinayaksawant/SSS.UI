@@ -17,6 +17,10 @@ import { JobPostingCategoryService } from '../services/job-posting-category.serv
   styleUrls: ['./job-posting-edit.component.css']
 })
 export class JobPostingEditComponent implements OnInit, OnDestroy {
+  
+  parentComponentName: string = "EditJobPosting" ;
+  parentComponentEntityId: string = "";  
+
   id: string | null = null;
   model?: JobPosting;
   categories$? : Observable<JobPostingCategory[]>;
@@ -48,6 +52,8 @@ export class JobPostingEditComponent implements OnInit, OnDestroy {
     this.routeSubscription = this.route.paramMap.subscribe({
       next: (params) => {
         this.id = params.get('id');
+
+        this.parentComponentEntityId  = (this.id) ? this.id: "";
 
         // Get BlogPost From API
         if (this.id) {

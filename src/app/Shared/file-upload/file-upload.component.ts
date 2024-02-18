@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FileUploadService } from '../services/file-upload.service';
 import { Observable } from 'rxjs';
-import { FileUpload } from '../models/fiile-upload.model';
+import { FileUpload } from '../models/file-upload.model';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,9 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./file-upload.component.css']
 })
 export class FileUploadComponent implements OnInit {
+  @Input() ParentComponentName : string = "";
+  @Input() ParentComponentEntityId : string = "";
+  
   private file?: File;
   fileName: string = '';
   title: string = '';

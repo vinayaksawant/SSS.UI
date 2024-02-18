@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FileUploadService } from '../services/file-upload.service';
+import { Component, Input ,OnInit, ViewChild } from '@angular/core';
+//import { FileUploadService } from '../services/file-upload.service';
+import { ImageUploadService } from '../services/image-upload.service';
 import { Observable } from 'rxjs';
-import { FileUpload } from '../models/fiile-upload.model';
+//import { FileUpload } from '../models/fiile-upload.model';
+import { ImageUpload } from '../models/image-upload.model';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -10,16 +12,22 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./image-upload.component.css']
 })
 export class ImageUploadComponent implements OnInit {
+  @Input() ParentComponentName : string = "";
+  @Input() ParentComponentEntityId : string = "";  
+  
   private file?: File;
   fileName: string = '';
   title: string = '';
-  images$?: Observable<FileUpload[]>;
+  images$?: Observable<ImageUpload[]>;
+
+ 
 
   @ViewChild('form', { static: false}) imageUploadForm?: NgForm;
 
-  constructor(private fileUploadService: FileUploadService) {
+  constructor(private imageUploadService: ImageUploadService) {
 
   }
+
   ngOnInit(): void {
     this.getImages();
   }
@@ -32,23 +40,23 @@ export class ImageUploadComponent implements OnInit {
   uploadImage(): void {
     if (this.file && this.fileName !== '' && this.title !== '') {
       // Image service to upload the image
-      this.fileUploadService.PostFileUpload(this.file, this.fileName, this.title)
+      this.imageUploadService.PostFileUpload(this.file, this.fileName, this.title)
       .subscribe({
         next: (response) => {
           console.log(response);
-          // this.imageUploadForm?.resetForm();
-          // this.getImages();
+           this.imageUploadForm?.resetForm();
+           this.getImages();
         }
       });
     }
   }
 
-  selectImage(image: FileUpload): void {
-    this.fileUploadService.selectImage(image);
+  selectImage(image: ImageUpload): void {
+    this.imageUploadService.selectImage(image);
   }
 
   private getImages() {
-    this.images$ = this.fileUploadService.getAllFileUploads();
+    this.images$ = this.imageUploadService.getAllFileUploads();
   }
 
 }
