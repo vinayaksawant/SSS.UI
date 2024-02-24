@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { FileUpload } from '../models/file-upload.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class FileUploadService {
-  selectedImage: BehaviorSubject<FileUpload> = new BehaviorSubject<FileUpload>({
+  selectedFile: BehaviorSubject<FileUpload> = new BehaviorSubject<FileUpload>({
     id: '',
     fileExtenstion: '',
     fileName: '',
@@ -16,11 +16,28 @@ export class FileUploadService {
     url: ''
   });
 
-  constructor(private http: HttpClient) { }
+  
+  public jobpostingFilesFromDB?: FileUpload[];
+  
+  // jobpostingFiles: BehaviorSubject<FileUpload[]> = new BehaviorSubject<FileUpload[]>([{
+  //   id: '',
+  //   fileExtenstion: '',
+  //   fileName: '',
+  //   title: '',
+  //   url: ''
+  // }]);  
+
+
+  constructor(private http: HttpClient) { 
+  }
 
   getAllFileUploads(): Observable<FileUpload[]> {
     return this.http.get<FileUpload[]>(`${environment.apiBaseUrl}/api/ImageFiles`);
   }
+
+  getAllFileUploads_ByEntityID_ByEntityType(): Observable<FileUpload[]> {
+    return this.http.get<FileUpload[]>(`${environment.apiBaseUrl}/api/ImageFiles`);
+  }  
 
 
   PostFileUpload(file: File, fileName: string, title: string): Observable<FileUpload> {
@@ -33,12 +50,24 @@ export class FileUploadService {
     return this.http.post<FileUpload>(`${environment.apiBaseUrl}/api/ImageFiles`, formData);
   }
 
-  selectImage(image: FileUpload): void {
-    this.selectedImage.next(image);
+  selectFile(file: FileUpload): void {
+    this.selectedFile.next(file);
   }
 
+  fileSelectionComplete () : void {
+    this.getAllFileUploads_ByEntityID_ByEntityType().subscribe({
+      next: x=>this.jobpostingFilesFromDB = x
+    })
+    //this.jobpostingFiles.next(this.jobpostingFiles);
+    console.log(this.jobpostingFilesFromDB);
+  }
+
+  // onfileSelectionComplete(): Observable<FileUpload> {
+  //     return this.jobpostingFiles.asObservable();
+  //   }  
+
   onSelectImage(): Observable<FileUpload> {
-    return this.selectedImage.asObservable()
+    return this.selectedFile.asObservable()
   }
 
 }

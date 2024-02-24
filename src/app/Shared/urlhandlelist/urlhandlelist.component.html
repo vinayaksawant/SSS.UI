@@ -1,0 +1,17 @@
+<!-- <input
+      #newHero
+      (keyup.enter)="addHero(newHero.value)"
+      (blur)="addHero(newHero.value); newHero.value = ''"
+/> -->
+<div class="mt-1">
+<label class="form-label">Add Url Handle {{ParentComponentName}} {{ParentComponentEntityId}}</label> <button type="button" class="btn btn-light" (click)="addHero(newHero.value)">Add</button>
+</div>
+<div class="mt-1">
+<input class="form-control" type="text"  #newHero />  
+</div>
+
+<div class="mt-1">
+<ul>
+    <li *ngFor="let hero of heroes ; let i = index">{{ hero }}  <a class="btn-close" (click)="removeHero(i)">&nbsp;</a></li>
+</ul>
+</div>

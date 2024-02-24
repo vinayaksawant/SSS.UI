@@ -1,8 +1,5 @@
-<p>job-posting-edit works!</p>
-{{id}}
-
 <div class="container">
-    <h1 class="mt-3">Edit BlogPost</h1>
+    <h1 class="mt-3">Edit Job Postings  :::  {{id}} </h1>
   
   
     <ng-container *ngIf="model">
@@ -16,6 +13,9 @@
           <div class="mt-3">
             <label for="urlHandle" class="form-label">Url Handle</label>
             <input type="text" id="urlHandle" name="urlHandle" class="form-control" [(ngModel)]="model.urlHandle">
+
+            <!-- <SSS-urlhandlelist [ParentComponentName]="parentComponentName" [ParentComponentEntityId]="parentComponentEntityId" (fileList) = "getList($event)"  ></SSS-file-upload>             -->
+            <SSS-urlhandlelist [ParentComponentName]="parentComponentName" [ParentComponentEntityId]="parentComponentEntityId"></SSS-urlhandlelist>
           </div>
   
           <div class="mt-3">
@@ -43,7 +43,7 @@
   
           <div class="mt-3">
             <label for="featuredImageUrl" class="form-label">Featured Image Url
-              <button type="button" class="btn btn-light" (click)="openImageSelector()">Select Image</button>
+              <button type="button" class="btn btn-light" (click)="openFileSelector()">Select Image</button>
             </label>
   
             <ng-container *ngIf="model.featuredImageUrl !== ''">
@@ -97,8 +97,8 @@
   </div>
   
   
-  <div class="images-container-modal" [ngClass]="{'d-block': isImageSelectorVisible, 'd-none': !isImageSelectorVisible}">
-    <button type="button" class="btn btn-light" style="position: fixed; top: 10px;right: 10px" (click)="closeImageSelector()">X</button>
-    <SSS-file-upload [ParentComponentName]="parentComponentName" [ParentComponentEntityId]="parentComponentEntityId"  ></SSS-file-upload>
+  <div class="images-container-modal" [ngClass]="{'d-block': isPopupVisible, 'd-none': !isPopupVisible}">
+    <button type="button" class="btn btn-light" style="position: fixed; top: 10px;right: 10px" (click)="closeFileSelector()">X</button>
+    <SSS-file-upload [ParentComponentName]="parentComponentName" [ParentComponentEntityId]="parentComponentEntityId" (fileList) = "getList($event)"  ></SSS-file-upload>
   </div>
   

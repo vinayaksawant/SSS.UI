@@ -10,6 +10,9 @@ import { JobPostingUpdate } from '../models/job-posting-update.models';
 // import { ImageService } from 'src/app/shared/components/image-selector/image.service';
 import { JobPostingService } from '../services/job-posting.service';
 import { JobPostingCategoryService } from '../services/job-posting-category.service';
+import { FileUploadService } from 'src/app/Shared/services/file-upload.service';
+import { FileUpload } from 'src/app/Shared/models/file-upload.model';
+
 
 @Component({
   selector: 'SSS-job-posting-edit',
@@ -25,21 +28,21 @@ export class JobPostingEditComponent implements OnInit, OnDestroy {
   model?: JobPosting;
   categories$? : Observable<JobPostingCategory[]>;
   selectedCategories?: string[];
-  isImageSelectorVisible : boolean = false;
+  isPopupVisible : boolean = false;
 
 
   routeSubscription?: Subscription;
   updateBlogPostSubscription?: Subscription;
   getBlogPostSubscription?: Subscription;
   deleteBlogPostSubscription?: Subscription;
-  imageSelectSubscricption?: Subscription;
+  fileSelectSubscricption?: Subscription;
 
 
   constructor(private route: ActivatedRoute,
     private jobPostingService: JobPostingService,
     private categoryService: JobPostingCategoryService,
-    private router:Router
-    //private imageService: ImageService
+    private router:Router,
+    private fileService: FileUploadService
     ) {
 
   }
@@ -66,15 +69,15 @@ export class JobPostingEditComponent implements OnInit, OnDestroy {
           ;
         }
 
-        // this.imageSelectSubscricption = this.imageService.onSelectImage()
-        // .subscribe({
-        //   next: (response) => {
-        //     if (this.model) {
-        //       this.model.featuredImageUrl = response.url;
-        //       this.isImageSelectorVisible = false;
-        //     }
-        //   }
-        // })
+        this.fileSelectSubscricption = this.fileService.onSelectImage()
+        .subscribe({
+          next: (response) => {
+            if (this.model) {
+              this.model.featuredImageUrl = response.url;
+              this.isPopupVisible = false;
+            }
+          }
+        })
       }
     });
   }
@@ -116,12 +119,16 @@ export class JobPostingEditComponent implements OnInit, OnDestroy {
     }
   }
 
-  openImageSelector(): void {
-    this.isImageSelectorVisible = true;
+  openFileSelector(): void {
+    this.isPopupVisible = true;
   }
 
-  closeImageSelector() : void {
-    this.isImageSelectorVisible = false;
+  closeFileSelector() : void {
+    this.isPopupVisible = false;
+  }
+
+  getList(files : FileUpload[]) : void{
+    console.log(files);
   }
 
   ngOnDestroy(): void {
@@ -129,6 +136,6 @@ export class JobPostingEditComponent implements OnInit, OnDestroy {
     this.updateBlogPostSubscription?.unsubscribe();
     this.getBlogPostSubscription?.unsubscribe();
     this.deleteBlogPostSubscription?.unsubscribe();
-    this.imageSelectSubscricption?.unsubscribe();
+    this.fileSelectSubscricption?.unsubscribe();
   }
 }

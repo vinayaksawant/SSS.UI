@@ -10,6 +10,7 @@ import { UpcommingeventListComponent } from './upcommingevent-list/upcommingeven
 import { UpcommingeventComponent } from './upcommingevent/upcommingevent.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { UrlhandlelistComponent } from './urlhandlelist/urlhandlelist.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
     UpcommingeventListComponent,
     UpcommingeventComponent,
     FileUploadComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    UrlhandlelistComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
   exports: [
     NavbarComponent,
     FileUploadComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    UrlhandlelistComponent
   ]
 })
 export class SharedModule { }

@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FileUploadService } from '../services/file-upload.service';
 import { Observable } from 'rxjs';
 import { FileUpload } from '../models/file-upload.model';
 import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'SSS-file-upload',
@@ -16,15 +17,16 @@ export class FileUploadComponent implements OnInit {
   private file?: File;
   fileName: string = '';
   title: string = '';
-  images$?: Observable<FileUpload[]>;
+  files$?: Observable<FileUpload[]>;
 
   @ViewChild('form', { static: false}) imageUploadForm?: NgForm;
+  @Output() fileList = new EventEmitter <FileUpload[]> ();
 
   constructor(private fileUploadService: FileUploadService) {
 
   }
   ngOnInit(): void {
-    this.getImages();
+    this.getFiles();
   }
 
   onFileUploadChange(event: Event): void {
@@ -38,20 +40,25 @@ export class FileUploadComponent implements OnInit {
       this.fileUploadService.PostFileUpload(this.file, this.fileName, this.title)
       .subscribe({
         next: (response) => {
-          console.log(response);
-          // this.imageUploadForm?.resetForm();
-          // this.getImages();
+          //console.log(response);
+          this.imageUploadForm?.resetForm();
+          this.getFiles();
         }
       });
     }
   }
 
-  selectImage(image: FileUpload): void {
-    this.fileUploadService.selectImage(image);
+  selectImage(file: FileUpload): void {
+    this.fileUploadService.selectFile(file);
   }
 
-  private getImages() {
-    this.images$ = this.fileUploadService.getAllFileUploads();
+  UploadCompleted () : void {
+    this.fileUploadService.fileSelectionComplete();
+    this.fileList.emit(this.fileUploadService.jobpostingFilesFromDB);
+  }
+
+  private getFiles() {
+    this.files$ = this.fileUploadService.getAllFileUploads();
   }
 
 }
