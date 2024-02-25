@@ -30,6 +30,9 @@ export class JobPostingEditComponent implements OnInit, OnDestroy {
   selectedCategories?: string[];
   isPopupVisible : boolean = false;
 
+  selectedDocumentList?: any[];
+  selectedUrlHandleList?: string[];    
+
 
   routeSubscription?: Subscription;
   updateBlogPostSubscription?: Subscription;
@@ -128,7 +131,13 @@ export class JobPostingEditComponent implements OnInit, OnDestroy {
   }
 
   getList(files : FileUpload[]) : void{
-    console.log(files);
+    this.selectedDocumentList = files;
+    console.log(this.selectedDocumentList);
+  }
+
+  getUrlHandleList(UrlHandleList : string[]) : void{
+    this.selectedUrlHandleList = UrlHandleList
+    console.log(UrlHandleList);
   }
 
   ngOnDestroy(): void {

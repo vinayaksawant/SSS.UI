@@ -15,7 +15,10 @@
             <input type="text" id="urlHandle" name="urlHandle" class="form-control" [(ngModel)]="model.urlHandle">
 
             <!-- <SSS-urlhandlelist [ParentComponentName]="parentComponentName" [ParentComponentEntityId]="parentComponentEntityId" (fileList) = "getList($event)"  ></SSS-file-upload>             -->
-            <SSS-urlhandlelist [ParentComponentName]="parentComponentName" [ParentComponentEntityId]="parentComponentEntityId"></SSS-urlhandlelist>
+            <SSS-urlhandlelist [ParentComponentName]="parentComponentName" 
+                                [ParentComponentEntityId]="parentComponentEntityId"
+                                (urlhandlelist) = "getUrlHandleList($event)">
+            </SSS-urlhandlelist>
           </div>
   
           <div class="mt-3">
@@ -29,21 +32,21 @@
   
             <div class="d-flex flex-row">
               <div class="col-6 p-2">
-                <textarea id="content" name="content" class="form-control" style="height: 350px;max-height: 350px;"
+                <textarea id="content" name="content" class="form-control" style="height: 50px;max-height: 50px;"
                   [(ngModel)]="model.content">
               </textarea>
               </div>
   
-              <div class="col-6 p-2" style="max-height: 350px; overflow-y: scroll;">
-                <!-- <markdown [data]="model.content"></markdown> -->
-              </div>
+              <!-- <div class="col-6 p-2 visually-hidden" style="max-height: 350px; overflow-y: scroll;">
+                <markdown [data]="model.content"></markdown>
+              </div> -->
             </div>
   
           </div>
   
           <div class="mt-3">
-            <label for="featuredImageUrl" class="form-label">Featured Image Url
-              <button type="button" class="btn btn-light" (click)="openFileSelector()">Select Image</button>
+            <label for="featuredImageUrl" class="form-label">Featured Document Url
+              <button type="button" class="btn btn-light" (click)="openFileSelector()">Select Document</button>
             </label>
   
             <ng-container *ngIf="model.featuredImageUrl !== ''">
@@ -54,6 +57,15 @@
   
             <input type="text" id="featuredImageUrl" name="featuredImageUrl" class="form-control"
               [(ngModel)]="model.featuredImageUrl">
+
+              <li *ngFor="let doc of selectedDocumentList ; let i = index">{{ doc.documentName }}</li>
+
+              <!-- <ng-container *ngIf="categories$ | async as categories">
+                <select class="form-control" [(ngModel)]="selectedCategories" name="categories" id="categories" multiple>
+                  <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                </select>
+              </ng-container> -->
+
           </div>
   
           <div class="mt-3">
